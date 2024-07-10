@@ -1,0 +1,46 @@
+
+import random
+Stones = random.randint(15, 30)
+User = 0
+YourTurn = True
+
+print("This is a game where players take turns taking stones from a pile of stones. The player who takes the last stone losses.")
+print("The current stone count is:", Stones)
+
+while True:
+    while YourTurn == True and Stones > 0:
+        User = int(input("How many stones do you want to remove?"))
+        if Stones == 1:
+            break
+        elif User > int(Stones/2):
+            print ("The stones to be picked shouldnt be more than half of the number of stones")
+        elif User <= 0:
+            print("Number of stones to be picked should atleast one")
+           
+        else:
+            
+            Stones = Stones - User
+            print("The user took ",User,"Stones")
+            print("Stones remaining: ",Stones)
+            YourTurn = not True
+
+
+        while YourTurn == False and Stones > 0:
+            if Stones == 1:
+                break;
+            AI = random.randint(1,int(Stones/2))
+            Stones = Stones - AI
+            print("AI removed ",AI,"Stones")
+            print("Stones remaining: ",Stones)
+            YourTurn = not False
+
+
+        if Stones == 1:
+            if YourTurn == True:
+                if Stones == 1:
+                    print(" You lost the game!")
+                    exit(0)
+            elif YourTurn == False:
+                if Stones == 1:
+                    print(" You won the game!")
+                    exit(0)
