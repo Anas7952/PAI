@@ -1,0 +1,21 @@
+def calculate_electricity_bill(units):
+    # Define the slab rates
+    if units <= 100:
+        bill = units * 1.5
+    elif units <= 200:
+        bill = (100 * 1.5) + ((units - 100) * 2.5)
+    elif units <= 300:
+        bill = (100 * 1.5) + (100 * 2.5) + ((units - 200) * 4)
+    else:
+        bill = (100 * 1.5) + (100 * 2.5) + (100 * 4) + ((units - 300) * 6)
+    
+    # Add fixed charges, if any
+    fixed_charge = 50
+    total_bill = bill + fixed_charge
+
+    return total_bill
+
+# Example usage
+units = 350  # Number of units consumed
+bill_amount = calculate_electricity_bill(units)
+print(f"Total electricity bill for {units} units is: ${bill_amount:.2f}")
